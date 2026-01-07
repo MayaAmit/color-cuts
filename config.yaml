@@ -1,0 +1,56 @@
+# =============================================================================
+# Color Cuts Configuration
+# =============================================================================
+# Edit these paths and parameters before running color_cuts.py
+
+# -----------------------------------------------------------------------------
+# Input Data Paths
+# -----------------------------------------------------------------------------
+# Training catalog with known redshifts (for building the pixel mask)
+redshift_catalog: "/path/to/your/redshift_catalog.fits"
+
+# Full photometric catalog (to apply the mask to)
+full_catalog: "/path/to/your/full_catalog.fits"
+
+# Optional: Red sequence members catalog (set to null if not using)
+redseq_catalog: null  # e.g., "/path/to/redseq_members.fits"
+
+# -----------------------------------------------------------------------------
+# Output Settings
+# -----------------------------------------------------------------------------
+output_dir: "./output"
+cluster_name: "Abell3411"  # Used in output filenames
+
+# -----------------------------------------------------------------------------
+# Pixel Mask Parameters
+# -----------------------------------------------------------------------------
+# Redshift threshold: objects below this are "foreground"
+z_threshold: 0.2
+
+# Color error threshold: exclude training objects with errors above this
+error_threshold: 20
+
+# Pixel size in color-color space
+pixel_size: 0.05
+
+# Purity threshold: fraction of foreground objects needed to classify pixel as foreground
+purity_threshold: 0.8
+
+# Color-color plot limits
+xlim: [-1, 3]   # B-G color range
+ylim: [-2, 3.5] # U-B color range
+
+# Minimum object count for a pixel to be included in the mask
+min_pixel_count: 10
+
+# -----------------------------------------------------------------------------
+# Optional Settings
+# -----------------------------------------------------------------------------
+# Use error-weighted purity calculation
+use_weighting: false
+
+# Include red sequence members in foreground output
+include_redseq: false
+
+# Redshift source filter (e.g., "NED", "DESI", or null for all)
+redshift_source_filter: "NED"
